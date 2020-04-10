@@ -10,7 +10,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 
 [x] Create inputs that take employee first name, last name, ID number, job title, annual salary
 [x] Create submit button
-[ ] Submit button should collect info from input fields and store in an object
+[x] Submit button should collect info from input fields and store in an object
 [ ] Append stored info onto DOM in table format
 [ ] Clear input fields 
 [ ] Using the stored info calculate monthly cost (divide by 12) 
