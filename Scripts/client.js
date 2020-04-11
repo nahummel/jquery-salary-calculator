@@ -1,13 +1,12 @@
-console.log('Works')
-
 $(document).ready(readyNow);
 
-employeeList = [ ];
+employeeList = [];
+
+
 
 function readyNow() {
     $('#submitButton').on('click', getInputs);
     $('#employeeTable').on('click', '.deleteButton', removeInputs)
-
 }
 
 function getInputs() {
@@ -29,12 +28,18 @@ function getInputs() {
 
     displayInputs();
     calculateMonthly();
-    
 }
 
 function calculateMonthly() {
-
     let monthlyCost = 0;
+
+    if (employeeList.length === 0) {
+        $('#monthlyCost').text(`Total Monthly: $0`);
+    }
+
+    if (monthlyCost < 20000) {
+        $('#monthlyCost').removeClass('red');
+    }
 
     $(monthlyCost).empty();
 
@@ -42,12 +47,13 @@ function calculateMonthly() {
         monthlyCost += money.annualSalary / 12;
         monthlyCostRounded = Math.round(100 * monthlyCost) / 100;
         $('#monthlyCost').text(`Total Monthly: $${monthlyCostRounded}`);
-        
+
         if (monthlyCost > 20000) {
             $('#monthlyCost').addClass('red');
         }
     }
 }
+
 
 function displayInputs() {
     $('tbody').empty();
@@ -60,20 +66,19 @@ function displayInputs() {
         newRow.append(`<td>${person.lastName}</td>`);
         newRow.append(`<td>${person.id}</td>`);
         newRow.append(`<td>${person.title}</td>`);
-        newRow.append(`<td>$${person.annualSalary}</td>`);
+        newRow.append(`<td class='${person.annualSalary}'>$${person.annualSalary}</td>`);
         newRow.append(`<td><button id='${person.id}' class="deleteButton">Delete</button></td>`)
-    } 
-
+    }
 }
 
 function removeInputs() {
-
     let id = $(this)[0].id
 
     employeeList = employeeList.filter(function (employee) {
         return id !== employee.id
-    })  
+    })
 
     $(this).closest('tr').remove();
-}
 
+    calculateMonthly();
+}
