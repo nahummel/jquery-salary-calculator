@@ -16,5 +16,5 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [x] Using the stored info calculate monthly cost (divide by 12) 
 [x] Append monthly cost to DOM
 [x] If monthly cost exceedsd $20,000 add class that turns background color red
-[ ] Create delete button
-[ ] Delete button should remove an employee from DOM
+[x] Create delete button
+[x] Delete button should remove an employee from DOM

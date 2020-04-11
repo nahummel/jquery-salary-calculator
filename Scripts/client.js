@@ -34,7 +34,7 @@ function calculateMonthly() {
     let monthlyCost = 0;
 
     if (employeeList.length === 0) {
-        $('#monthlyCost').text(`Total Monthly: $0`);
+        $('#monthlyCost').text(`Total Monthly: $0.00`);
     }
 
     if (monthlyCost < 20000) {
@@ -45,8 +45,7 @@ function calculateMonthly() {
 
     for (const money of employeeList) {
         monthlyCost += money.annualSalary / 12;
-        monthlyCostRounded = Math.round(100 * monthlyCost) / 100;
-        $('#monthlyCost').text(`Total Monthly: $${monthlyCostRounded}`);
+        $('#monthlyCost').text(`Total Monthly: ${getUsdFormat(monthlyCost)}`);
 
         if (monthlyCost > 20000) {
             $('#monthlyCost').addClass('red');
@@ -54,6 +53,12 @@ function calculateMonthly() {
     }
 }
 
+function getUsdFormat(number) {
+    return Number(number).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    })
+}
 
 function displayInputs() {
     $('tbody').empty();
@@ -61,12 +66,14 @@ function displayInputs() {
     for (const person of employeeList) {
         $('tbody').append(`<tr id="${person.id}"></tr>`);
 
+        const formattedSalary = getUsdFormat(person.annualSalary)
+
         const newRow = $(`#${person.id}`)
         newRow.append(`<td>${person.firstName}</td>`);
         newRow.append(`<td>${person.lastName}</td>`);
         newRow.append(`<td>${person.id}</td>`);
         newRow.append(`<td>${person.title}</td>`);
-        newRow.append(`<td class='${person.annualSalary}'>$${person.annualSalary}</td>`);
+        newRow.append(`<td>${formattedSalary}</td>`);
         newRow.append(`<td><button id='${person.id}' class="deleteButton">Delete</button></td>`)
     }
 }
