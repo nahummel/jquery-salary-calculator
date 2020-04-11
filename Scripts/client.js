@@ -2,10 +2,12 @@ console.log('Works')
 
 $(document).ready(readyNow);
 
-employeeList = [ ]
+employeeList = [ ];
 
 function readyNow() {
     $('#submitButton').on('click', getInputs);
+    $('#employeeTable').on('click', '.deleteButton', removeInputs)
+
 }
 
 function getInputs() {
@@ -27,6 +29,7 @@ function getInputs() {
 
     displayInputs();
     calculateMonthly();
+    
 }
 
 function calculateMonthly() {
@@ -50,12 +53,27 @@ function displayInputs() {
     $('tbody').empty();
 
     for (const person of employeeList) {
-        const newRow = $('tbody').append(`<tr></tr>`);
+        $('tbody').append(`<tr id="${person.id}"></tr>`);
+
+        const newRow = $(`#${person.id}`)
         newRow.append(`<td>${person.firstName}</td>`);
         newRow.append(`<td>${person.lastName}</td>`);
         newRow.append(`<td>${person.id}</td>`);
         newRow.append(`<td>${person.title}</td>`);
-        newRow.append(`<td>${person.annualSalary}</td>`);
+        newRow.append(`<td>$${person.annualSalary}</td>`);
+        newRow.append(`<td><button id='${person.id}' class="deleteButton">Delete</button></td>`)
     } 
 
 }
+
+function removeInputs() {
+
+    let id = $(this)[0].id
+
+    employeeList = employeeList.filter(function (employee) {
+        return id !== employee.id
+    })  
+
+    $(this).closest('tr').remove();
+}
+
