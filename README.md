@@ -11,10 +11,10 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [x] Create inputs that take employee first name, last name, ID number, job title, annual salary
 [x] Create submit button
 [x] Submit button should collect info from input fields and store in an object
-[ ] Append stored info onto DOM in table format
-[ ] Clear input fields 
-[ ] Using the stored info calculate monthly cost (divide by 12) 
-[ ] Append monthly cost to DOM
+[x] Append stored info onto DOM in table format
+[x] Clear input fields 
+[x] Using the stored info calculate monthly cost (divide by 12) 
+[x] Append monthly cost to DOM
 [ ] If monthly cost exceedsd $20,000 add class that turns background color red
 [ ] Create delete button
 [ ] Delete button should remove an employee from DOM

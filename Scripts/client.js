@@ -26,19 +26,31 @@ function getInputs() {
     $('#annualSalary').val('');
 
     displayInputs();
+    calculateMonthly();
+}
+
+function calculateMonthly() {
+
+    let monthlyCost = 0
+
+    $(monthlyCost).empty()
+
+    for (const money of employeeList) {
+        monthlyCost += money.annualSalary / 12
+        $('#monthlyCost').text(`Total Monthly: $${monthlyCost}`)
+    }
 }
 
 function displayInputs() {
     $('tbody').empty();
 
     for (const person of employeeList) {
-        const newRow = $('tbody').append(`<tr></tr>`)
-        newRow.append(`<td>${person.firstName}</td>`)
-        newRow.append(`<td>${person.lastName}</td>`)
-        newRow.append(`<td>${person.id}</td>`)
-        newRow.append(`<td>${person.title}</td>`)
-        newRow.append(`<td>${person.annualSalary}</td>`)
-    
+        const newRow = $('tbody').append(`<tr></tr>`);
+        newRow.append(`<td>${person.firstName}</td>`);
+        newRow.append(`<td>${person.lastName}</td>`);
+        newRow.append(`<td>${person.id}</td>`);
+        newRow.append(`<td>${person.title}</td>`);
+        newRow.append(`<td>${person.annualSalary}</td>`);
     } 
 
 }
