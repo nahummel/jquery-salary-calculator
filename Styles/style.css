@@ -1,0 +1,9 @@
+#monthlyCost {
+    float: right;
+}
+
+.red {
+    background-color: red;
+    color: white;
+    padding: 5px;
+}

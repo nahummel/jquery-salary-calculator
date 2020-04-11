@@ -31,13 +31,18 @@ function getInputs() {
 
 function calculateMonthly() {
 
-    let monthlyCost = 0
+    let monthlyCost = 0;
 
-    $(monthlyCost).empty()
+    $(monthlyCost).empty();
 
     for (const money of employeeList) {
-        monthlyCost += money.annualSalary / 12
-        $('#monthlyCost').text(`Total Monthly: $${monthlyCost}`)
+        monthlyCost += money.annualSalary / 12;
+        monthlyCostRounded = Math.round(100 * monthlyCost) / 100;
+        $('#monthlyCost').text(`Total Monthly: $${monthlyCostRounded}`);
+        
+        if (monthlyCost > 20000) {
+            $('#monthlyCost').addClass('red');
+        }
     }
 }
 
