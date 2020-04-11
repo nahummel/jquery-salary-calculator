@@ -6,7 +6,7 @@ employeeList = [];
 
 function readyNow() {
     $('#submitButton').on('click', getInputs);
-    $('#employeeTable').on('click', '.deleteButton', removeInputs)
+    $('#employeeTable').on('click', '.deleteButton', removeEmployee)
 }
 
 function getInputs() {
@@ -78,7 +78,7 @@ function displayInputs() {
     }
 }
 
-function removeInputs() {
+function removeEmployee() {
     let id = $(this)[0].id
 
     employeeList = employeeList.filter(function (employee) {
