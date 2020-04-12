@@ -7,3 +7,15 @@
     color: white;
     padding: 5px;
 }
+
+body {
+    padding: 10px;
+}
+
+header {
+    text-align: center;
+}
+
+#required {
+    font-size: smaller;
+}
