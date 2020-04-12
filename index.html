@@ -12,12 +12,13 @@
         </header>
         <div class="inputs">
             <h3>Add Employee</h3>
-            <input id="firstName" placeholder="First Name">
-            <input id="lastName" placeholder="Last Name">
-            <input id="id" placeholder="ID">
-            <input id="title" placeholder="Title">
-            <input id="annualSalary" placeholder="Annual Salary">
-            <button id="submitButton">Submit</button>
+            <input id="firstName" placeholder="First Name *">
+            <input id="lastName" placeholder="Last Name *">
+            <input id="id" placeholder="ID *">
+            <input id="title" placeholder="Title *">
+            <input id="annualSalary" placeholder="Annual Salary *">
+            <button id="submitButton" class="btn btn-primary">Submit</button>
+            <p id="required">Required fields *</p>
         </div>
         <main>
             <h3>Employees</h3>
@@ -29,6 +30,7 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Annual Salary</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

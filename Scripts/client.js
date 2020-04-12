@@ -17,17 +17,20 @@ function getInputs() {
         title: $('#title').val(),
         annualSalary: $('#annualSalary').val(),
     }
+    if (employee.firstName === '' || employee.lastName === '' || employee.id === '' || employee.title === '' || employee.annualSalary === '') {
+        alert('Please fill all required fields');
+    } else {
+        employeeList.push(employee);
 
-    employeeList.push(employee);
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#id').val('');
+        $('#title').val('');
+        $('#annualSalary').val('');
 
-    $('#firstName').val('');
-    $('#lastName').val('');
-    $('#id').val('');
-    $('#title').val('');
-    $('#annualSalary').val('');
-
-    displayInputs();
-    calculateMonthly();
+        displayInputs();
+        calculateMonthly();
+    }
 }
 
 function calculateMonthly() {
@@ -74,7 +77,7 @@ function displayInputs() {
         newRow.append(`<td>${person.id}</td>`);
         newRow.append(`<td>${person.title}</td>`);
         newRow.append(`<td>${formattedSalary}</td>`);
-        newRow.append(`<td><button id='${person.id}' class="deleteButton">Delete</button></td>`)
+        newRow.append(`<td><button id='${person.id}' class="deleteButton btn btn-secondary">Delete</button></td>`)
     }
 }
 
